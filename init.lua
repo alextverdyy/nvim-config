@@ -7,4 +7,7 @@ require 'config.keymaps'
 require 'config.autocmds'
 
 -- Load plugins
-require 'plugins'
+require 'kickstart.plugins'
+require 'kickstart.plugins.gitsigns'
+require 'kickstart.plugins.lint'
+require 'kickstart.plugins.indent_line'

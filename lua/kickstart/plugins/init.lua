@@ -12,17 +12,17 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require 'plugins.guess-indent',
-  require 'plugins.gitsigns',
-  require 'plugins.which-key',
-  require 'plugins.telescope',
-  require 'plugins.lsp',
-  require 'plugins.conform',
-  require 'plugins.blink-cmp',
-  require 'plugins.colorschemes',
-  require 'plugins.todo-comments',
-  require 'plugins.mini',
-  require 'plugins.treesitter',
+  require 'kickstart.plugins.guess-indent',
+  require 'kickstart.plugins.gitsigns',
+  require 'kickstart.plugins.which-key',
+  require 'kickstart.plugins.telescope',
+  require 'kickstart.plugins.lsp',
+  require 'kickstart.plugins.conform',
+  require 'kickstart.plugins.blink-cmp',
+  require 'kickstart.plugins.colorschemes',
+  require 'kickstart.plugins.todo-comments',
+  require 'kickstart.plugins.mini',
+  require 'kickstart.plugins.treesitter',
 
   { import = 'custom.plugins' },
 }, {

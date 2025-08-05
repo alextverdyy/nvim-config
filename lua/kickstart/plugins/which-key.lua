@@ -68,7 +68,7 @@ return {
       -- Individual key mappings with icons
       -- File operations
       { '<leader>e', desc = '󰙅 File Explorer' },
-      { '<leader>f', desc = '󰈙 [F]ormat buffer' },
+      { '<leader>f', desc = '󰍉 [F]ind' },
       { '<leader>,', desc = '󰸩 Buffers' },
       { '<leader>.', desc = '󰠮 Toggle Scratch Buffer' },
       { '<leader>:', desc = '󰘳 Command History' },

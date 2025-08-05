@@ -28,6 +28,7 @@ return {
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
+      'folke/snacks.nvim',
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -73,7 +74,7 @@ return {
           end
 
           -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
+          --  Most Language Servers support renaming across files, e, 'swift'tc.
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
@@ -219,8 +220,6 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -234,6 +233,30 @@ return {
               -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
+        },
+        sourcekit = {
+          cmd = { 'sourcekit-lsp' },
+          filetypes = { 'swift' },
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern('Package.swift', '.git')(fname) or vim.fs.dirname(fname)
+          end,
+          on_init = function(client, _)
+            vim.notify('sourcekit-lsp initialized (PID: ' .. client.id .. ')', vim.log.levels.INFO, {
+              title = 'LSP',
+              timeout = 5000,
+            })
+          end,
+          on_exit = function(_, code, signal)
+            local message = ('sourcekit-lsp exited with code %d and signal %d'):format(code, signal)
+            vim.notify(message, vim.log.levels.ERROR, {
+              title = 'LSP',
+              timeout = 10000,
+            })
+          end,
+          capabilities = vim.tbl_deep_extend('force', {}, capabilities, {
+            documentFormattingProvider = false,
+            documentRangeFormattingProvider = false,
+          }),
         },
       }
 
@@ -251,6 +274,11 @@ return {
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
+
+      ensure_installed = vim.tbl_filter(function(s)
+        return s ~= 'sourcekit'
+      end, vim.tbl_keys(servers))
+
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
@@ -270,6 +298,9 @@ return {
           end,
         },
       }
+
+      vim.lsp.enable 'sourcekit'
+      vim.lsp.enable 'cssls'
     end,
   },
 }

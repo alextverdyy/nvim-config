@@ -41,18 +41,6 @@ return {
       end,
       desc = 'Notification History',
     },
-    {
-      '<leader>e',
-      function()
-        local snacks = Snacks.picker.current
-        if snacks then
-          snacks.input.win:focus()
-        else
-          Snacks.explorer {}
-        end
-      end,
-      desc = 'File Explorer',
-    },
     -- find
     {
       '<leader>fb',

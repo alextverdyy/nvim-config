@@ -36,3 +36,5 @@ end, { desc = ' Move focus to the upper window' })
 vim.keymap.set('n', '<leader>kl', function()
   vim.cmd 'Screenkey toggle_statusline_component'
 end, { desc = 'Toggle screenkey statusline component' })
+
+vim.api.nvim_set_keymap('n', '<leader>r', ':RunC<CR>', { noremap = true, silent = true })

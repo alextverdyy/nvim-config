@@ -14,6 +14,7 @@ return {
           comments = { italic = false }, -- Disable italics in comments
         },
       }
+      vim.cmd [[colorscheme tokyonight]]
     end,
   },
   {
@@ -76,7 +77,6 @@ return {
       }
 
       -- setup must be called before loading
-      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }

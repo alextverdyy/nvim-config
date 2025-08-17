@@ -1,4 +1,5 @@
 -- Lualine statusline configuration
+--
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -21,7 +22,7 @@ return {
 
     require('lualine').setup {
       options = {
-        theme = 'tokyonight',
+        theme = 'catppuccin',
         component_separators = '',
         section_separators = { left = '', right = '' },
         disabled_filetypes = { 'alpha', 'Outline' },
@@ -32,7 +33,7 @@ return {
         lualine_c = { 'filename' },
         lualine_x = { clients_lsp, 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_z = { 'location' },
       },
     }
   end,

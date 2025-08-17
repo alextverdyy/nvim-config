@@ -1,5 +1,5 @@
 -- iOS-specific completions and snippets
-if true then
+if vim.uv.os_uname().sysname == 'Darwin' then
   return {}
 end
 return {

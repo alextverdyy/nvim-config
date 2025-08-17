@@ -3,7 +3,6 @@ return {
   {
     'wojciech-kulik/xcodebuild.nvim',
     dependencies = {
-      'nvim-telescope/telescope.nvim',
       'MunifTanjim/nui.nvim',
       'nvim-tree/nvim-tree.lua',
     },
@@ -42,7 +41,7 @@ return {
       -- iOS Development keymaps
       local map = vim.keymap.set
       local prefix = '<leader>x'
-      
+
       -- Xcode/iOS keymaps
       map('n', prefix, '', { desc = '📱 iOS Development' })
       map('n', prefix .. 'p', '<cmd>XcodebuildPicker<cr>', { desc = 'Show picker' })

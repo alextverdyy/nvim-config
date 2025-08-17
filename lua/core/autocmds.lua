@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
     if not ok then
       return
     end
-    
+
     local tree = tree_api.tree
 
     -- Nothing to do if tree is not opened
@@ -83,4 +83,20 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
       cmd = { 'tmux-language-server' },
     }
   end,
+})
+
+vim.api.nvim_create_autocmd('ModeChanged', {
+  desc = 'Unlink current snippet on leaving insert/selection mode.',
+  group = vim.api.nvim_create_augroup('LuaSnipModeChanged', {}),
+  pattern = '[si]*:[^si]*',
+  callback = vim.schedule_wrap(function(args)
+    local ls = require 'luasnip'
+
+    if vim.fn.mode():match '^[si]' then -- still in insert/select mode
+      return
+    end
+    if ls.session.current_nodes[args.buf] and not ls.session.jump_active then
+      ls.unlink_current()
+    end
+  end),
 })

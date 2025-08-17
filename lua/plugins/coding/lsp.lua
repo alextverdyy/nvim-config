@@ -7,6 +7,8 @@ return {
     opts = {
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        { path = 'snacks.nvim', words = { 'Snacks' } },
+        { path = 'lazy.nvim', words = { 'LazyVim' } },
       },
     },
   },
@@ -32,12 +34,24 @@ return {
 
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('gra', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('grd', function()
+            require('snacks').picker.lsp_definitions()
+          end, '[G]oto [D]efinition')
+          map('grr', function()
+            require('snacks').picker.lsp_references()
+          end, '[G]oto [R]eferences')
+          map('gri', function()
+            require('snacks').picker.lsp_implementations()
+          end, '[G]oto [I]mplementation')
+          map('grt', function()
+            require('snacks').picker.lsp_type_definitions()
+          end, '[G]oto [T]ype Definition')
+          map('<leader>ds', function()
+            require('snacks').picker.lsp_symbols()
+          end, '[D]ocument [S]ymbols')
+          map('<leader>ws', function()
+            require('snacks').picker.lsp_symbols { workspace = true }
+          end, '[W]orkspace [S]ymbols')
           map('<leader>D', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)

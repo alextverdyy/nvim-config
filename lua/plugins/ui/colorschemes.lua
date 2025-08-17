@@ -1,6 +1,11 @@
 -- Colorschemes configuration
 return {
   {
+    'scottmckendry/cyberdream.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
     -- Tokyo Night colorscheme
     'folke/tokyonight.nvim',
     priority = 1000,
@@ -12,6 +17,13 @@ return {
       }
     end,
   },
+  {
+    'eldritch-theme/eldritch.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  { 'EdenEast/nightfox.nvim' },
   {
     -- Catppuccin colorscheme
     'catppuccin/nvim',
@@ -28,7 +40,7 @@ return {
         show_end_of_buffer = false,
         term_colors = false,
         dim_inactive = {
-          enabled = false,
+          enabled = true,
           shade = 'dark',
           percentage = 0.15,
         },
@@ -63,11 +75,9 @@ return {
             enabled = true,
             indentscope_color = '',
           },
-          telescope = trueggg,
           which_key = true,
           snacks = {
             enabled = true,
-            indent_scope_color = 'mauve',
           },
         },
       }

@@ -3,7 +3,7 @@ return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
   lazy = false,
-  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+  dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     -- Harpoon 2 does not require a setup call unless you want to override defaults
   end,

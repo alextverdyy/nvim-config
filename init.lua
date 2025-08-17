@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Load core configuration
-require('core')
+require 'core'
 
 -- Load plugins
-require('plugins')
+require 'plugins'

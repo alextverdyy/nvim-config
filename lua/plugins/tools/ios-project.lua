@@ -6,7 +6,7 @@ return {
       require('project_nvim').setup {
         -- Detection methods
         detection_methods = { 'lsp', 'pattern' },
-        
+
         -- Patterns for iOS projects
         patterns = {
           '.git',
@@ -16,23 +16,23 @@ return {
           '.svn',
           'Makefile',
           'package.json',
-          '*.xcodeproj',       -- Xcode projects
-          '*.xcworkspace',     -- Xcode workspaces
-          'Package.swift',     -- Swift Package Manager
-          'Podfile',           -- CocoaPods
-          'Cartfile',          -- Carthage
-          'project.pbxproj',   -- Xcode project file
+          '*.xcodeproj', -- Xcode projects
+          '*.xcworkspace', -- Xcode workspaces
+          'Package.swift', -- Swift Package Manager
+          'Podfile', -- CocoaPods
+          'Cartfile', -- Carthage
+          'project.pbxproj', -- Xcode project file
         },
-        
+
         -- Don't calculate root dir on specific directories
         exclude_dirs = { '~/Downloads/*' },
-        
+
         -- Show hidden files in telescope
         show_hidden = false,
-        
+
         -- When set to false, you will get a message when project.nvim changes your directory.
         silent_chdir = true,
-        
+
         -- What scope to change the directory, valid options are
         -- * global (default)
         -- * tab
@@ -41,8 +41,8 @@ return {
       }
 
       -- Telescope integration
-      require('telescope').load_extension('projects')
-      
+      require('telescope').load_extension 'projects'
+
       -- Project keymaps
       vim.keymap.set('n', '<leader>fp', '<cmd>Telescope projects<cr>', { desc = 'Find projects' })
     end,
@@ -56,7 +56,7 @@ return {
           'toggleterm',
           direction = 'horizontal',
           autos_croll = true,
-          quit_on_exit = 'never'
+          quit_on_exit = 'never',
         },
       }
 
@@ -100,7 +100,7 @@ return {
         end,
         condition = {
           callback = function()
-            return vim.fn.filereadable('Package.swift') == 1
+            return vim.fn.filereadable 'Package.swift' == 1
           end,
         },
       }
@@ -116,7 +116,7 @@ return {
         end,
         condition = {
           callback = function()
-            return vim.fn.filereadable('Package.swift') == 1
+            return vim.fn.filereadable 'Package.swift' == 1
           end,
         },
       }
@@ -133,7 +133,7 @@ return {
         end,
         condition = {
           callback = function()
-            return vim.fn.filereadable('Podfile') == 1
+            return vim.fn.filereadable 'Podfile' == 1
           end,
         },
       }
@@ -141,7 +141,7 @@ return {
       -- Overseer keymaps
       local map = vim.keymap.set
       local task_prefix = '<leader>o'
-      
+
       map('n', task_prefix, '', { desc = '⚙️  Tasks' })
       map('n', task_prefix .. 'r', '<cmd>OverseerRun<cr>', { desc = 'Run task' })
       map('n', task_prefix .. 't', '<cmd>OverseerToggle<cr>', { desc = 'Toggle tasks' })

@@ -30,11 +30,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   group = vim.api.nvim_create_augroup('AutoSave', { clear = true }),
   pattern = '*',
   callback = function()
-    if vim.bo.modified and not vim.bo.readonly and vim.fn.expand('%') ~= '' and vim.bo.buftype == '' then
-      vim.cmd('silent! write')
+    if vim.bo.modified and not vim.bo.readonly and vim.fn.expand '%' ~= '' and vim.bo.buftype == '' then
+      vim.cmd 'silent! write'
     end
   end,
-  desc = 'Auto-save when leaving insert mode'
+  desc = 'Auto-save when leaving insert mode',
 })
 
 -- Optional: Manual save keymap (Ctrl+S)
@@ -46,3 +46,7 @@ vim.keymap.set('v', ';', ':', { desc = 'Enter command mode' })
 
 -- Optional: Map colon to semicolon's original function (repeat f/F/t/T)
 vim.keymap.set('n', ':', ';', { desc = 'Repeat f/F/t/T motion' })
+
+vim.keymap.set('n', '<leader>rn', function()
+  return ':IncRename ' .. vim.fn.expand '<cword>'
+end, { expr = true, desc = 'Incremental Rename' })

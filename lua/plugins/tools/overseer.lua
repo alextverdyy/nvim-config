@@ -4,6 +4,6 @@ return {
   config = function()
     require('overseer').setup {}
     -- Load additional configuration
-    require('config.overseer')
+    require 'config.overseer'
   end,
 }

@@ -1,2 +1,0 @@
--- Auto session management
-return {}

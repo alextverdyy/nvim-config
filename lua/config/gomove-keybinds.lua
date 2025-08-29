@@ -1,2 +1,0 @@
--- Gomove keymaps are now centralized in core/keymaps.lua
--- This file is no longer needed for keymap definitions

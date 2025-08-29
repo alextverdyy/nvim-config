@@ -1,4 +1,7 @@
 -- Swift language support and development tools
+if vim.loop.os_uname().sysname ~= 'Darwin' then
+  return {}
+end
 return {
   {
     'keith/swift.vim',

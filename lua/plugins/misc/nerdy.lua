@@ -1,10 +1,9 @@
 -- Nerdy icons picker
 return {
   '2KAbhishek/nerdy.nvim',
-  dependencies = { 'folke/snacks.nvim' },
   config = function()
     local nerdy = require 'nerdy'
-    local snacks = require 'snacks'
+
 
     local function open_nerdy_picker()
       local icon_list = require 'nerdy.icons'

@@ -76,9 +76,7 @@ return {
             indentscope_color = '',
           },
           which_key = true,
-          snacks = {
-            enabled = true,
-          },
+
         },
       }
       vim.cmd.colorscheme 'catppuccin-mocha'

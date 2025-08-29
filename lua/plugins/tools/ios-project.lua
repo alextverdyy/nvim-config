@@ -1,4 +1,7 @@
 -- iOS project management and utilities
+if vim.loop.os_uname().sysname ~= 'Darwin' then
+  return {}
+end
 return {
   {
     'ahmedkhalf/project.nvim',
@@ -27,7 +30,7 @@ return {
         -- Don't calculate root dir on specific directories
         exclude_dirs = { '~/Downloads/*' },
 
-        -- Show hidden files in telescope
+        -- Show hidden files in fzf-lua
         show_hidden = false,
 
         -- When set to false, you will get a message when project.nvim changes your directory.
@@ -43,8 +46,6 @@ return {
       -- Telescope integration
       require('telescope').load_extension 'projects'
 
-      -- Project keymaps
-      vim.keymap.set('n', '<leader>fp', '<cmd>Telescope projects<cr>', { desc = 'Find projects' })
     end,
   },
   {
@@ -139,16 +140,6 @@ return {
       }
 
       -- Overseer keymaps
-      local map = vim.keymap.set
-      local task_prefix = '<leader>o'
-
-      map('n', task_prefix, '', { desc = '⚙️  Tasks' })
-      map('n', task_prefix .. 'r', '<cmd>OverseerRun<cr>', { desc = 'Run task' })
-      map('n', task_prefix .. 't', '<cmd>OverseerToggle<cr>', { desc = 'Toggle tasks' })
-      map('n', task_prefix .. 'a', '<cmd>OverseerTaskAction<cr>', { desc = 'Task actions' })
-      map('n', task_prefix .. 'i', '<cmd>OverseerInfo<cr>', { desc = 'Task info' })
-      map('n', task_prefix .. 'b', '<cmd>OverseerBuild<cr>', { desc = 'Build task' })
-      map('n', task_prefix .. 'q', '<cmd>OverseerQuickAction<cr>', { desc = 'Quick action' })
     end,
   },
 }

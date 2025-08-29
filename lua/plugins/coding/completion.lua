@@ -1,4 +1,7 @@
--- Blink completion engine
+-- Completion engine setup using blink.cmp.
+-- Sources: snippets, LSP, path, buffer, ripgrep.
+-- LuaSnip is used for snippet expansion.
+-- Appearance and keymaps are customized for usability.
 return {
   'saghen/blink.cmp',
   event = 'VimEnter',

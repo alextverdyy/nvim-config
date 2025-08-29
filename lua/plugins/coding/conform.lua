@@ -1,18 +1,10 @@
--- Conform - formatting
+-- Autoformat buffer on save using conform.nvim.
+-- Uses stylua for Lua and ruff for Python. C/C++ are excluded from autoformat.
+-- Press <leader><leader>f to manually format the buffer.
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
-  keys = {
-    {
-      '<leader><leader>f',
-      function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
-      end,
-      mode = '',
-      desc = '[F]ormat buffer',
-    },
-  },
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
@@ -27,8 +19,20 @@ return {
       end
     end,
     formatters_by_ft = {
-      lua = { 'stylua' },
       python = { 'ruff_fix', 'ruff_format' },
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      html = { 'prettier' },
+      css = { 'prettier' },
+      go = { 'gofmt' },
+      c = { 'clang-format' },
+      cpp = { 'clang-format' },
+      bash = { 'shfmt' },
+      fish = { 'fish_indent' },
+      zsh = {},
+      swift = {},
+      lua = {},
+      ruby = { 'rubocop' },
     },
   },
 }

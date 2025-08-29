@@ -12,25 +12,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Handle Snacks windows on quit
-vim.api.nvim_create_autocmd('QuitPre', {
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  pattern = '*',
   callback = function()
-    local snacks_windows = {}
-    local floating_windows = {}
-    local windows = vim.api.nvim_list_wins()
-    for _, w in ipairs(windows) do
-      local filetype = vim.api.nvim_get_option_value('filetype', { buf = vim.api.nvim_win_get_buf(w) })
-      if filetype:match 'snacks_' ~= nil then
-        table.insert(snacks_windows, w)
-      elseif vim.api.nvim_win_get_config(w).relative ~= '' then
-        table.insert(floating_windows, w)
-      end
-    end
-    if 1 == #windows - #floating_windows - #snacks_windows then
-      -- Should quit, so we close all Snacks windows.
-      for _, w in ipairs(snacks_windows) do
-        vim.api.nvim_win_close(w, true)
-      end
+    if vim.bo.filetype == 'dashboard' then
+      vim.opt_local.list = false
+      vim.opt_local.foldcolumn = "0"
+      vim.opt_local.listchars = { space = '', tab = '', eol = '', trail = '' }
     end
   end,
 })

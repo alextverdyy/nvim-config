@@ -27,13 +27,5 @@ return {
       datapath = vim.fn.stdpath 'data',
     }
   end,
-  keys = {
-    {
-      '<leader>fp',
-      function()
-        require('snacks').projects()
-      end,
-      desc = 'Find Projects',
-    },
-  },
+
 }

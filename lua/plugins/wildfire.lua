@@ -1,6 +1,6 @@
 -- Incremental selection based on treesitter
 return {
-  "sustech-data/wildfire.nvim",
+  "pouyio/wildfire.nvim",
   event = "VeryLazy",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = function()

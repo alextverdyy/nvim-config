@@ -1,1 +1,1 @@
-require("config.sourcekit")
+-- Add needed auto cmd
